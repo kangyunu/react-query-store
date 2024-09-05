@@ -2,6 +2,13 @@
   "name": "react-query-store",
   "version": "1.0.0",
   "description": "@tanstack/react-query store.",
+  "keywords": [
+    "react",
+    "react query",
+    "react-query",
+    "tanstack",
+    "query"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
@@ -10,6 +17,10 @@
   },
   "author": "byungseon.kang@gmail.com",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kangyunu/react-query-store"
+  },
   "peerDependencies": {
     "@tanstack/react-query": "^5",
     "react": "^18 || ^19"
