@@ -9,11 +9,20 @@
     "tanstack",
     "query"
   ],
-  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "type": "module",
   "scripts": {
-    "build": "tsc"
+    "build": "sh scripts/build.sh"
   },
   "author": "byungseon.kang@gmail.com",
   "license": "UNLICENSED",
@@ -28,6 +37,7 @@
   "devDependencies": {
     "@types/node": "^22.5.4",
     "@types/react": "^18.3.5",
+    "esbuild": "^0.23.1",
     "typescript": "^5.5.4"
   }
 }
