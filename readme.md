@@ -41,17 +41,17 @@ const store = create({
 
 // Using queries
 const PostList = () => {
-  const { data } = useQuery({
+  const query = useQuery({
     queryKey: store.key.generator.list(),
     queryFn: store.query.list,
   });
   // ...
 }
 
-const PostDetail = ({ id }) => {
-  const { data } = useQuery({
-    queryKey: store.key.generator.detail([id]),
-    queryFn: store.query.detail,
+const PostDetail = ({ postId }) => {
+  const query = useQuery({
+    queryKey: store.key.generator.detail([postId]),
+    queryFn: () => store.query.detail(postId),
   });
   // ...
 }
@@ -74,5 +74,5 @@ queryClient.invalidateQueries({ queryKey: store.key.root });
 queryClient.invalidateQueries({ queryKey: store.key.base.detail });
 
 // Invalidate specific query
-queryClient.invalidateQueries({ queryKey: store.key.generator.detail([1]) });
+queryClient.invalidateQueries({ queryKey: store.key.generator.detail([postId]) });
 ```
