@@ -14,30 +14,45 @@
     "src"
   ],
   "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
   },
   "type": "module",
   "scripts": {
-    "build": "sh scripts/build.sh"
+    "build": "tsup",
+    "format": "prettier --write .",
+    "lint": "tsc",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint",
+    "local-release": "changeset version && changeset publish",
+    "prepublish": "npm run ci"
   },
-  "author": "byungseon.kang@gmail.com",
   "license": "MIT",
+  "author": "byungseon.kang@gmail.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/kangyunu/react-query-store"
+  },
+  "bugs": {
+    "url": "https://github.com/kangyunu/react-query-store/issues"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5",
     "react": "^18 || ^19"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.2",
+    "@changesets/cli": "^2.27.8",
     "@types/node": "^22.5.4",
     "@types/react": "^18.3.5",
     "esbuild": "^0.23.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4"
   }
 }
