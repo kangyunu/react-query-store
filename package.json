@@ -1,6 +1,6 @@
 {
   "name": "react-query-store",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "@tanstack/react-query store.",
   "keywords": [
     "react",
