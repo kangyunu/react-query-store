@@ -30,7 +30,7 @@ export type Store<Q extends Query, M extends Mutation> = {
 };
 
 export const create = <Q extends Query, M extends Mutation>(
-  input: Partial<CreateInput<Q, M>>
+  input: Partial<CreateInput<Q, M>>,
 ): Store<Q, M> => {
   type Key = Store<Q, M>["key"];
   type Query = Store<Q, M>["query"];
@@ -45,14 +45,14 @@ export const create = <Q extends Query, M extends Mutation>(
       root,
       base: queryFnKeys.reduce(
         (acc, fnKey) => ({ ...acc, [fnKey]: [...root, fnKey] }),
-        {} as Key["base"]
+        {} as Key["base"],
       ),
       generator: queryFnKeys.reduce(
         (acc, fnKey) => ({
           ...acc,
           [fnKey]: (queryKey: QueryKey = []) => [...root, fnKey, ...queryKey],
         }),
-        {} as Key["generator"]
+        {} as Key["generator"],
       ),
     },
     query,
